@@ -9,10 +9,23 @@ async function getAllUsers() {
       `SELECT id, username 
       FROM users;
     `);
-  
+  console.log(rows);
     return rows;
   }
 
+  async function createUser({ username, password }) {
+    try {
+        const result = await client.query(`
+        INSERT INTO users(username, password)
+        VALUES ($1, $2);
+      `, [username, password]);
+  
+      return result
+    } catch (error) {
+      throw error;
+    }
+  }
+
 module.exports = {
-  client,getAllUsers,
+  client,getAllUsers,createUser
 }
