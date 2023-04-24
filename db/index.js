@@ -181,6 +181,15 @@ async function createPost({ authorId,title, content,tags =[]}) {
 
   /****************** TAG Methods ***********************/
 
+  async function getAllTags() {
+    const { rows } = await client.query(
+      `SELECT *
+      FROM tags;
+    `);
+
+    return rows;
+  }
+
 async function createTags(tagList) {
     
     if (tagList.length === 0) {
@@ -307,5 +316,6 @@ async function createPostTag(postId, tagId) {
     createPostTag,
     addTagsToPost,
     getPostById,
-    getPostsByTagName
+    getPostsByTagName,
+    getAllTags
   }

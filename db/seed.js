@@ -15,7 +15,8 @@ const {
     createPostTag,
     addTagsToPost,
     getPostById,
-    getPostsByTagName
+    getPostsByTagName,
+    getAllTags
   } = require('./index');
 
 // this function should call a query which drops all tables from our database
@@ -234,6 +235,10 @@ async function testDB() {
       console.log("Calling getAllPosts");
       const posts = await getAllPosts();
       console.log("Result:", posts);
+  
+      console.log("Calling getTags");
+      const tags = await getAllTags();
+      console.log("Result:", tags);
   
       console.log("Calling updatePost on posts[0]");
       const updatePostResult = await updatePost(posts[0].id, {
