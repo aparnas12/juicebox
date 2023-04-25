@@ -1,9 +1,10 @@
+require('dotenv').config();
 const PORT = 3000;
 const express = require('express');
 
 //express() is a function that creates an application for us so can be invoked and a server object is returned
 const server = express();
-require('dotenv').config();
+
 const apiRouter = require('./api');
 const { client } = require('./db');
 client.connect();

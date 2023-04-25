@@ -23,7 +23,7 @@ apiRouter.use(async (req, res, next) => {
     try {
       const { id } = jwt.verify(token, JWT_SECRET);
 
-      if (id) {
+      if (id) { //get the user object and set it in the request object  so can be accessible to all routes/paths through it.
         req.user = await getUserById(id);
         next();
       }
